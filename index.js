@@ -2,7 +2,10 @@ const express = require('express') //require es una función que permite cargar 
 const app = express() // se inicializa express en una variable llamada app
 require('dotenv').config()
 const routes = require('./src/routes/index')
-
+const cors = require('cors');
+app.use(cors({origin: ['http://localhost:3000'] }));
+app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
 app.use(routes)
 
 app.listen(process.env.PORT, () => {
